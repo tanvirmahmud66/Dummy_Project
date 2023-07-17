@@ -1,24 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import AddButton from './components/AddButton';
+import Header from './components/Header';
+import NewTodo from './pages/NewTodo';
+import TodoListPages from './pages/TodoListPages';
+import TodoPage from './pages/TodoPage';
+import { MemoryRouter as Router,Routes,Route} from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="container dark">
+        <div className='app'>
+          <Header/>
+          <Routes>
+            <Route path='/' Component={TodoListPages}/>
+            <Route path='/todo/:id' Component={TodoPage}/>
+            <Route path='/todo/new' Component={NewTodo}/>
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
